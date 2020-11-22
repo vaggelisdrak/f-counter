@@ -1,0 +1,72 @@
+from collections import Counter
+with open('chat1.txt','r',encoding='utf-8') as f:
+    chat =f.read()
+
+students=[]
+st=[]
+total=[]
+total1=[]
+mescount=0
+fcount=0
+count=0
+oldy =[]
+num=0
+num1=0
+fspam=[]
+rank=1
+frank=1
+
+for line in chat.split('\n'):
+    line=line.split('\n')
+    for i in line:
+        y=i.split()
+        if count%2!=0:
+            newy = y+oldy
+            students.append(newy)
+            y =[]
+            total1.append(oldy)
+        oldy = y
+        count+=1
+
+for m in students:
+    if m[0] =='f':
+        fcount+=1
+        st.append((m[2],m[3])) 
+    if m[0] != 'f':
+        mescount+=1
+
+for l in total1:
+    total.append((l[1],l[2]))
+
+c=Counter(st)
+y1=Counter(total) 
+
+print(fcount,'f στο τσατ απο τα',mescount+fcount,'μηνυματα')
+print('')
+print('---ΣΥΝΟΛΙΚΑ ΜΗΝΥΜΑΤΑ---')
+print('')
+for value1, count1 in y1.most_common():#an thes to top 10 bale most_common(10)
+    print(rank,'.',value1,':', count1,'συνολικα μηνυματα')
+    rank+=1
+    num+=1
+print('')
+print(70*'_')
+print('')
+print('---F---')
+print('')
+for value,count in c.most_common():#an thes to top 10 bale most_common(10)
+        for value1, count1 in y1.most_common():#an thes to top 10 bale most_common(10)
+            if value1==value:
+                print(frank,'.',value,':', count,'f απο τα',count1,'μηνυματα που εστειλε')
+                num1+=1
+                frank+=1
+                if count==count1:
+                    fspam.append(value)
+print('')
+print(num1,'ατομα σπαμαραν f απο τους',num)
+print('')
+for i in fspam:
+    print('O/Η',i,'σπαμαρε μονο f')
+
+    
+
