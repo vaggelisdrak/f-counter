@@ -1,54 +1,1420 @@
 from collections import Counter
-with open('chat1.txt','r',encoding='utf-8') as f:
-    chat =f.read()
+chat = '''
+from Κοσμας Αρχοντης to everyone:    4:13 PM
+υπερβολικος, αλεξ :P
+from Αλέξανδρος Πικραμένος to everyone:    4:13 PM
+ελα νταξει πρωτο εξαμηνο ειναι
+from Κοσμας Αρχοντης to everyone:    4:14 PM
+τρου
+from Χρήστος Μώκος to everyone:    4:14 PM
+αν ειχαμε βιβλια απ'αρχης , δεν πιανομασταν τρ
+from Giorgos Rodopoulos to everyone:    4:14 PM
+πράγματι
+from Giorgos Rodopoulos to everyone:    4:14 PM
+αν το συγκρίνεις με τρίτη λυκείου, καλύτερα την βγάζουμε τώρα...
+from Χρήστος Μώκος to everyone:    4:15 PM
+μην βιαζεσαι
+from Αλέξανδρος Πικραμένος to everyone:    4:15 PM
+φουλ
+from Αλέξανδρος Πικραμένος to everyone:    4:15 PM
+οταν χρειαστει να διαβασουμε θα ειναι χειροτερα
+from Αλέξανδρος Πικραμένος to everyone:    4:15 PM
+αλλα μεχρι τοτε εχουμε καιρο
+from Στέργιος Καραδήμος to everyone:    4:16 PM
+θα ειναι ενας μηνας κρισιμος ο επομενος
+from Νεκταρια Ζευγουλα to everyone:    4:17 PM
+κρισιμα ειναι τα επομενα 7 χρονια
+from Renia Menegou to everyone:    4:17 PM
+^
+from Eleftheria Sotiriou to everyone:    4:17 PM
+κολλαει λιγο που και που?
+from Στέργιος Καραδήμος to everyone:    4:17 PM
+νταξει δεν διαβαζεις και τα 7 χρονια
+from Στέργιος Καραδήμος to everyone:    4:17 PM
+1 μηνα καθε εξαμηνο
+from Χρήστος Μώκος to everyone:    4:17 PM
+απο περσι και περα , ολα κρισιμα ειναι , change my mind
+from Στέργιος Καραδήμος to everyone:    4:17 PM
+2 μηνες το χρονο τζιτζι
+from Νεκταρια Ζευγουλα to everyone:    4:18 PM
+δεν διαβαζω γενικα.
+from Paraskeuas Koutsikos to everyone:    4:18 PM
+pw efaga 2 piata fakes kai exw piei kai 2 frapedes k efaga k 4 melomakarorna
+from Αλέξανδρος Πικραμένος to everyone:    4:18 PM
+οντως
+from Paraskeuas Koutsikos to everyone:    4:18 PM
+k eimai me to laptop sthn toualeta
+from Renia Menegou to everyone:    4:18 PM
+μονο αληθειες η νεκταρια
+from Νεκταρια Ζευγουλα to everyone:    4:18 PM
+αχαχαχ
+from Αλέξανδρος Πικραμένος to everyone:    4:18 PM
+μεχρι στιγμης δε παει και πολυ καλα αυτο ρενια
+from Renia Menegou to everyone:    4:18 PM
+εμενα μου λες; 
+from lefteris to everyone:    4:18 PM
+καλη πρωτοχρονια στην τουαλετα παρασκευα
+from Χρήστος Μώκος to everyone:    4:18 PM
+she knew 10 languages but chose to speak facts
+from Paraskeuas Koutsikos to everyone:    4:19 PM
+lefteri fxaristwww
+from Αλέξανδρος Πικραμένος to everyone:    4:19 PM
+οχι μιλαω για το αληθειες και νεκταρια
+from Αλέξανδρος Πικραμένος to everyone:    4:19 PM
+αυτο
+from Στέργιος Καραδήμος to everyone:    4:19 PM
+ειναι δυσκολο βασικα εκει που εισαι ζαμαν φου να αρχισεις να διαβαζεις
+from Νεκταρια Ζευγουλα to everyone:    4:19 PM
+fax
+from Κυριάκος Μητσοτάνκ to everyone:    4:19 PM
+*tank noises*
+from Antonis Soula to everyone:    4:19 PM
+δα-σκαλακι
+from Χρήστος Μώκος to everyone:    4:19 PM
+τι ειναι ζαμαν φου;
+from Renia Menegou to everyone:    4:19 PM
+αααα οκειι
+from Αλέξανδρος Πικραμένος to everyone:    4:19 PM
+γκουκγλ δατ σιτ
+from Στέργιος Καραδήμος to everyone:    4:19 PM
+δεν με νοιαζει
+from Νίκος Μήλκας to everyone:    4:19 PM
+θα ειναι οι πρωτες εξετασεις που θα γραψουμε με ανοιχτα βιβλια χωρις να εχουμε βιβλια
+from Renia Menegou to everyone:    4:20 PM
+με ανοιχτα γραφουμε;
+from Χρήστος Μώκος to everyone:    4:20 PM
+ζαμάν φου και ζεμάν φου
+δε με νοιάζει
+≈ συνώνυμα: δεν μου καίγεται καρφάκι, στα παλιά μου τα παπούτσια
+from up4206969 to everyone:    4:20 PM
+ναι γιατι με βιβλια 1000 σελιδες θα βρεις ακρη στην εξεταστικη
+from nikolasmporonkay to everyone:    4:20 PM
+ποτε αρχισαμε?
+from Γιώργος Γούβης to everyone:    4:20 PM
+και 15 ξεκινησαμε?
+from Renia Menegou to everyone:    4:20 PM
+στις 4
+from Χρήστος Μώκος to everyone:    4:20 PM
+το βρηκα αλεξ
+from lefteris to everyone:    4:20 PM
+4 ακριβως
+from Στέργιος Καραδήμος to everyone:    4:20 PM
+https://www.youtube.com/watch?v=yJEwsq9z8sA
+from Χρήστος Μώκος to everyone:    4:20 PM
+4 και 10 πρπ
+from nikolasmporonkay to everyone:    4:20 PM
+φακ
+from nikolasmporonkay to everyone:    4:20 PM
+εχασα τπτ;
+from Στέργιος Καραδήμος to everyone:    4:20 PM
+απο φιλους σατσνους
+from Eleftheria Sotiriou to everyone:    4:21 PM
+εφαγα πολυ γλυκο τωρα θελω υπνο χαχα
+from Αλέξανδρος Πικραμένος to everyone:    4:21 PM
+ωραιος μωκο
+from Γιώργος Γούβης to everyone:    4:21 PM
+ενταξει για 5 λεπτα κομπλε
+from Αλέξανδρος Πικραμένος to everyone:    4:21 PM
+ρε γουβη
+from Αλέξανδρος Πικραμένος to everyone:    4:21 PM
+σε χασαμε ρε γουβη
+from Χρήστος Μώκος to everyone:    4:21 PM
+^
+from Αλέξανδρος Πικραμένος to everyone:    4:21 PM
+δε μιλας τοσο καιρο
+from Γιώργος Γούβης to everyone:    4:22 PM
+εσπασα το κινητο
+from Χρήστος Μώκος to everyone:    4:22 PM
+απο κινητο μπαινεις;
+from Γιώργος Γούβης to everyone:    4:22 PM
+και παιρνω που κ που τησ αδερφης μοθ
+from Kωνσταντινος Μαντζαρης to everyone:    4:23 PM
+πως ξερουμε οτι ο R κυβος δεν εχει αλλους υποχωρους διαστασης 3?
+from lefteris to everyone:    4:23 PM
+σε καθε χωρο R^n υπαρχει αλλος υποχωρος του διαστασης n εκτος απο τον εαυτο του?
+from Γιώργος Γούβης to everyone:    4:23 PM
+εγω νομιζα απο ομαδικη φβ ελεγεσ χαχαχα
+from Αλέξανδρος Πικραμένος to everyone:    4:24 PM
+οχι ρε
+from Antonis Soula to everyone:    4:24 PM
+δεν ακουγεσαι
+from Αλέξανδρος Πικραμένος to everyone:    4:24 PM
+εδω στο γουμπεξ
+from Γεράσιμος Μίαρης to everyone:    4:24 PM
+θα δωσουν δωροεπιταγη 200ευρο για tablet/laptop κοιτα αν καλυπτεις προυποθεσεις
+from Αλίκα Ζώτου to everyone:    4:24 PM
+γιατι πηραμε αυτες τις 3 στηλες?
+from Γιώργος Γούβης to everyone:    4:24 PM
+προσεχω μαθημα ρε χαχαχ
+from Renia Menegou to everyone:    4:24 PM
+τυχαια αλικα
+from Κωνσταντίνος Μπάρκας to everyone:    4:24 PM
+Οχι τυχαια
+from Αλίκα Ζώτου to everyone:    4:24 PM
+αα οκ ευχαριστω
+from Renia Menegou to everyone:    4:25 PM
+αφου λεει πχ τις 1,2,4
+from Κωνσταντίνος Μπάρκας to everyone:    4:25 PM
+Εννοω οτι τις πηρε γιατι με αυτες φαινεται οτι ο πινακας εχει διασταση 3
+from Κωνσταντίνος Μπάρκας to everyone:    4:25 PM
+Θα μπορουσε να παρει και αλλες αρκει να βγαζανε και αυτες διασταση 3
+from Renia Menegou to everyone:    4:25 PM
+ναι αυτοο
+from Γιώργος Γούβης to everyone:    4:25 PM
+για το 200ευρω πρεπει οικογενειακο εισοδημα κατω απο 12000
+from Giorgos Rodopoulos to everyone:    4:25 PM
+τα βελάκια πάνω από τις στήλες τι σημαίνουν 
+from Sofia Zgouleta to everyone:    4:26 PM
+οτι ειναι γραμμικα ανεξαρτητες 
+from Γεράσιμος Μίαρης to everyone:    4:26 PM
+τραβανε το ματι
+from Νίκος Μήλκας to everyone:    4:26 PM
+δειχνουν τον νοτιο πολο
+from Giorgos Rodopoulos to everyone:    4:26 PM
+και γιατί αυτές οι τρεις;
+from Meletis Kalozoumis to everyone:    4:26 PM
+σου το δειχνουν τα οδηγα στοιχεια 
+from Giorgos Rodopoulos to everyone:    4:26 PM
+γιατί όχι 1 2 5 ξέρω γω
+from Νίκος Μήλκας to everyone:    4:26 PM
+και γω το εχω απορια
+from Καλλιροη Πλατη to everyone:    4:27 PM
+ειναι οι στηλε;ς που αποτελουν τα ανεξαρτητα διανυσματα μεταξυτους
+from Renia Menegou to everyone:    4:27 PM
+το ειπε πιο πανω ο μπαρκας
+from Renia Menegou to everyone:    4:27 PM
+μισο
+from Νίκος Βέμης to everyone:    4:27 PM
+rwta
+from Renia Menegou to everyone:    4:27 PM
+from Κωνσταντίνος Μπάρκας to Everyone:    4:25  PM
+Εννοω οτι τις πηρε γιατι με αυτες φαινεται οτι ο πινακας εχει διασταση 3
+from Κωνσταντίνος Μπάρκας to Everyone:    4:25  PM
+Θα μπορουσε να παρει και αλλες αρκει να βγαζανε και αυτες διασταση 3
+from Παναγιώτα Σμπιλίρη to everyone:    4:27 PM
+επισης επειδη εχουν το ο δν ειναι ειναι γραμμικα εξαρτημενες
+from Χρήστος Μώκος to everyone:    4:27 PM
+η 3 και η 5 εννοουσε;
+from Giorgos Rodopoulos to everyone:    4:27 PM
+και γιατί μεγ. αριθ. γρ. ανεξ. στηλών είναι 3;;
+from Παπαχρηστου Μαριος-Γιωργος to everyone:    4:27 PM
+μαλλον
+from Μπασαγιάννη Γεωργία to everyone:    4:27 PM
+ναι μωκο
+from Renia Menegou to everyone:    4:28 PM
+λογικα επειδη ειναι η ταξη του πινακα ροδο
+from Χρήστος Μώκος to everyone:    4:28 PM
+^
+from Kωνσταντινος Μαντζαρης to everyone:    4:28 PM
+απο την ταξη ροδο
+from Giorgos Rodopoulos to everyone:    4:28 PM
+όσο ειναι η ταξη ειναι και ο μεγ. αριθμος;
+from Kωνσταντινος Μαντζαρης to everyone:    4:28 PM
+ν
+from Tom Unit Isma Nasu to everyone:    4:28 PM
+Να φάω φακές με μέλι ή με μαγιονέζα;
+from Giorgos Rodopoulos to everyone:    4:28 PM
+μαγιονεζα fosho
+from Χρήστος Μώκος to everyone:    4:28 PM
+raider spotted
+from christos m to everyone:    4:29 PM
+washabi
+from Χρήστος Μώκος to everyone:    4:29 PM
+votekick tom 1/8
+from Giorgos Rodopoulos to everyone:    4:29 PM
+Tom μονάδας
+from Antonis Soula to everyone:    4:29 PM
+christos m γιατι δεν ανοιγεις το μικροφωνο ρε μαγκα;
+from Tom Unit Isma Nasu to everyone:    4:29 PM
+Μονάδας αλλά πόσες μονάδες μέλι να βάλω στις φακές μου
+from Γιώργος Παπουτσάς to everyone:    4:29 PM
+τομας ο τρενος
+from Χρήστος Μώκος to everyone:    4:30 PM
+λολ
+from Giorgos Rodopoulos to everyone:    4:30 PM
+Γιατί να φας φακές ξέρω γω
+from Tom Unit Isma Nasu to everyone:    4:30 PM
+Επειδή γαμάνε με μέλι
+from Στέργιος Καραδήμος to everyone:    4:30 PM
+μελακι
+from Eleftheria Sotiriou to everyone:    4:30 PM
+ποιος ειναι?
+from Tom Unit Isma Nasu to everyone:    4:30 PM
+Αυτός 1-0
+from Χρήστος Μώκος to everyone:    4:30 PM
+report Tom Unit Isma Nasu for raiding ημτυ 
+from Γερασιμος Ροντογιαννης to everyone:    4:30 PM
+^
+from Giorgos Rodopoulos to everyone:    4:30 PM
+Έχεις δοκιμάσει κοτόπουλο στιφάδο με γέμιση πραλίνας φουντουκιού;
+from Στέργιος Καραδήμος to everyone:    4:31 PM
+φαγατε ολο το μελι
+from Tom Unit Isma Nasu to everyone:    4:31 PM
+Μα βεβαίως
+from Eleftheria Sotiriou to everyone:    4:31 PM
+5η δημοτικου μηπως εχεις ιστορια και μπερδευτικες με τα λινκ 
+from Giorgos Rodopoulos to everyone:    4:31 PM
+Ότι καλύτερο
+from Γερασιμος Ροντογιαννης to everyone:    4:31 PM
+και πως ηταν
+from Eleftheria Sotiriou to everyone:    4:31 PM
+μπερδευτηκες*
+from Στέργιος Καραδήμος to everyone:    4:31 PM
+ωωω τι ειπε ο αλλος ρε κοτοπουλο στιφαδο
+from Στέργιος Καραδήμος to everyone:    4:31 PM
+δυνατο
+from Γιώργος Παπουτσάς to everyone:    4:31 PM
+μερεεεεεεεεντα
+from Tom Unit Isma Nasu to everyone:    4:31 PM
+Προσωπικά το κοτόπουλο το προτιμώ με σκέτη σοκολάτα, χωρίς την πραλίνα αλλά κομπλέ και με τη Μερεντούλα του
+from Γερασιμος Ροντογιαννης to everyone:    4:31 PM
+πραλινα φουντουκιου
+from Χρήστος Μώκος to everyone:    4:31 PM
+πώς καταλαβαμε ποια ειναι τα ανεξαρτητα διαν./στηλες ;
+from Γερασιμος Ροντογιαννης to everyone:    4:32 PM
+εχεις ενα δικιο εκει tom
+from Στέργιος Καραδήμος to everyone:    4:32 PM
+εγω την  προβατινα την τρωω παντα με μαχαιροπιρουνο γιατι αλλιως γεμιζω με λιγδες τα δαχτυλα μου
+from Tom Unit Isma Nasu to everyone:    4:32 PM
+Ποτέ αγάμητη την προβατίνα όμως
+from giwrgos to everyone:    4:33 PM
+^
+from Χρήστος Μώκος to everyone:    4:33 PM
+περιμενε , τι λεμε τωρα ;
+from giwrgos to everyone:    4:33 PM
+πρεπει να μαλακωσει το κρεατακι
+from Eleftheria Sotiriou to everyone:    4:33 PM
+μπορειτε να σταματησετε λιγο?
+from Πανος Βλαχος to everyone:    4:33 PM
+xrhsto υπαρχει ορισμος για γραμμικη ανεξαρτησια
+from Tom Unit Isma Nasu to everyone:    4:33 PM
+Βεβαίωωως
+from Νεκταρία Βερυκόκκου to everyone:    4:33 PM
+δεν θελω να ακουω για προβατα και κυριως για αρνια
+from giwrgos to everyone:    4:33 PM
+τα λιγουρευτηκες?
+from Χρήστος Μώκος to everyone:    4:33 PM
+πανο λιγος σεβασμος
+from christos m to everyone:    4:34 PM
+kick tom unit
+from Γερασιμος Ροντογιαννης to everyone:    4:34 PM
+και εσυ πως κανεις πασχα
+from Γερασιμος Ροντογιαννης to everyone:    4:34 PM
+με κατσικι;
+from Στέργιος Καραδήμος to everyone:    4:34 PM
+με κατσικι
+from Γερασιμος Ροντογιαννης to everyone:    4:34 PM
+στεργιος out
+from Fay Kaniou to everyone:    4:34 PM
+Νεκταρια αρνι :((((
+from Νεκταρία Βερυκόκκου to everyone:    4:34 PM
+γιου ντοντ γκετ δε τζοουκ
+from Νεκταρία Βερυκόκκου to everyone:    4:34 PM
+ευχαριστω φαιη
+from Στέργιος Καραδήμος to everyone:    4:34 PM
+οχι το καταλαβαμε
+from Fay Kaniou to everyone:    4:34 PM
+<3....
+from Γιώργος Παπουτσάς to everyone:    4:34 PM
+πασχα με κατσικι....
+from Στέργιος Καραδήμος to everyone:    4:34 PM
+απλως δεν ηταν ποτε αστειο
+from Tom Unit Isma Nasu to everyone:    4:34 PM
+Παιδιά πάσχα χωρίς σουβλάκι Πίκατσου απ το Νώντα δεν έχει
+from Νεκταρία Βερυκόκκου to everyone:    4:35 PM
+εγω γελασα που το πα
+from Νεκταρία Βερυκόκκου to everyone:    4:35 PM
+♥
+from Νίκος Μήλκας to everyone:    4:35 PM
+γιατι η τριτη ειναι εξαρτημενη απο πρωτη και δευτερη;
+from giwrgos to everyone:    4:35 PM
+σεφερλης
+from Antonis Soula to everyone:    4:35 PM
+γιατι δεν ειναι ανεξαρτητη
+from Γερασιμος Ροντογιαννης to everyone:    4:35 PM
+αυτο ειναι ευχαριστο για εσενα
+from Tom Unit Isma Nasu to everyone:    4:36 PM
+Anyway ποια είναι η γνώμη σας για το Ολοκαύτωμα;
+from giwrgos to everyone:    4:36 PM
+πολυ καλο
+from giwrgos to everyone:    4:36 PM
+πολυ καλο
+from Γερασιμος Ροντογιαννης to everyone:    4:36 PM
+καθαρισε την ευρωπη
+from Στέργιος Καραδήμος to everyone:    4:36 PM
+τομ 4 η ωρα αντι να κοιμηθεις προτιμησες να μπεις γραμμικη αλγεβρα στην πατρα;
+from Κωνσταντίνος Μπάρκας to everyone:    4:36 PM
+χαχαχα
+from Eleftheria Sotiriou to everyone:    4:37 PM
+σταματηστε
+from christos m to everyone:    4:37 PM
+this shit gets too far now
+from Giorgos Rodopoulos to everyone:    4:37 PM
+Ελευθερια hndd
+from Χρήστος Μώκος to everyone:    4:37 PM
+i told you dude : votekick tom 1/8
+from Tom Unit Isma Nasu to everyone:    4:37 PM
+Εγώ παιδιά νίπτω τας χείρας μου
+from Γερασιμος Ροντογιαννης to everyone:    4:37 PM
+παει μακρια η βαλιτσα
+from Eleftheria Sotiriou to everyone:    4:37 PM
+ροδο τι σημαινει αυτο χαχα
+from Στέργιος Καραδήμος to everyone:    4:37 PM
+χρειαζεται παντως μια δευτερη σρεμπενιτσα
+from Giorgos Rodopoulos to everyone:    4:37 PM
+hahahahha
+from christos m to everyone:    4:37 PM
+auta sto emp Tom Unit
+from Giorgos Rodopoulos to everyone:    4:37 PM
+happy name day
+from Χρήστος Μώκος to everyone:    4:38 PM
+σρεμπενιτσα ; τι εγινε εκει ;
+from Eleftheria Sotiriou to everyone:    4:38 PM
+ααα χαχα ευχαριστω μαθαινω ακομα
+from Στέργιος Καραδήμος to everyone:    4:38 PM
+καθαρση των μουσουλμανων
+from Γερασιμος Ροντογιαννης to everyone:    4:38 PM
+tom unit ή ποντιος πιλατος
+from Στέργιος Καραδήμος to everyone:    4:38 PM
+απο τους σερβους
+from giwrgos to everyone:    4:38 PM
+nsfw chat
+from Χρήστος Μώκος to everyone:    4:38 PM
+απο τους αντιστασιαστες ;
+from Γερασιμος Ροντογιαννης to everyone:    4:38 PM
+rated M chat
+from Tom Unit Isma Nasu to everyone:    4:38 PM
+Πολύ καμμένα
+from Tom Unit Isma Nasu to everyone:    4:38 PM
+Σαν τους Ευβραίους
+from Στέργιος Καραδήμος to everyone:    4:38 PM
+τοτε με τον πολεμο ρε
+from Γιώργος Παπουτσάς to everyone:    4:38 PM
+rated R
+from Στέργιος Καραδήμος to everyone:    4:39 PM
+που διαλυθηκε η γιουγκοσλαβια
+from Γερασιμος Ροντογιαννης to everyone:    4:39 PM
+R?
+from Antonis Soula to everyone:    4:39 PM
+αφου τωρα δεν ειπαμε οτι η 1η στηλη ειναι γτ,ανεξ;
+from Γιώργος Παπουτσάς to everyone:    4:39 PM
+for rodopoulos
+from Antonis Soula to everyone:    4:39 PM
+γρ*
+from Γερασιμος Ροντογιαννης to everyone:    4:39 PM
+gay
+from giwrgos to everyone:    4:39 PM
+qanon  το καναμε εδωμεσα
+from Χρήστος Μώκος to everyone:    4:39 PM
+για την γενοκτονια των σερβων απο τους κροατες δεν μιλαει κανεις ...
+from Στέργιος Καραδήμος to everyone:    4:39 PM
+ναι ρε νταξει
+from Στέργιος Καραδήμος to everyone:    4:39 PM
+τοτε πολλα εγιναν
+from giwrgos to everyone:    4:39 PM
+2ος ππ?
+from Χρήστος Μώκος to everyone:    4:39 PM
+ναι
+from Στέργιος Καραδήμος to everyone:    4:39 PM
+κανεις δεν ειχε δικαιο για εμενα
+from Giorgos Rodopoulos to everyone:    4:39 PM
+Fun fact: ο ρόδο ειναι μισος σερβος
+from Στέργιος Καραδήμος to everyone:    4:39 PM
+και οι δυο πλευρες εκαναν τις μαλακιες τους
+from giwrgos to everyone:    4:40 PM
+from Giorgos Rodopoulos to everyone:    4:39 PM
+Fun fact: ο ρόδο ειναι μισος gay
+from Χρήστος Μώκος to everyone:    4:40 PM
+στον β'ππ οχι
+from Giorgos Rodopoulos to everyone:    4:40 PM
+ALLOW IT FAM
+from Στέργιος Καραδήμος to everyone:    4:40 PM
+αα για β ππ δεν ξερω εγω για το 90 μιλαω
+from Tom Unit Isma Nasu to everyone:    4:40 PM
+Μπα ο Χίτλερ δεν έκανε τίποτα λάθος
+from Χρήστος Μώκος to everyone:    4:40 PM
+τοτε ναι
+from Χρήστος Μώκος to everyone:    4:40 PM
+περιμενε
+from Χρήστος Μώκος to everyone:    4:40 PM
+δεν απαντουσα σε εσενα
+from giwrgos to everyone:    4:40 PM
+τομ ως εβραιος αφροαμερικανος συμφωνω μαζι σου
+from Γερασιμος Ροντογιαννης to everyone:    4:40 PM
+εφτιαξε μεγαλη ιστορια ο μπαγασας
+from christos m to everyone:    4:40 PM
+tom unit πες τα αλλου αυτα που λες
+from Γιώργος Παπουτσάς to everyone:    4:41 PM
+jerry στοπ
+from Sasuke to everyone:    4:41 PM
+katon gokakyu no jutsu
+from Στέργιος Καραδήμος to everyone:    4:41 PM
+αα κομπλε
+from Γερασιμος Ροντογιαννης to everyone:    4:41 PM
+δεν ειναι δυνατον να σταματησω
+from Tom Unit Isma Nasu to everyone:    4:41 PM
+Τώρα δε με δέχεστε ως Μαχτικό Ελικόπτερο Apache; Ρατσιστές
+from Στέργιος Καραδήμος to everyone:    4:41 PM
+μωκο τον kocayne τον ξες;
+from Γερασιμος Ροντογιαννης to everyone:    4:41 PM
+και αυτος πολυ καλος κυριος
+from Χρήστος Μώκος to everyone:    4:41 PM
+που και ποτε ;
+from Γερασιμος Ροντογιαννης to everyone:    4:42 PM
+attack helicopter approved
+from giwrgos to everyone:    4:42 PM
+και σερβοι ομως καλα επαθαν,προκαλκουσαν πολυ
+from Χρήστος Μώκος to everyone:    4:42 PM
+αυτος ο τομ , πολυ unfunny
+from Στέργιος Καραδήμος to everyone:    4:42 PM
+youtuber ανεβαζε προπαγανδιστικα τραγουδια απο εκεινο τον πολεμο
+from Στέργιος Καραδήμος to everyone:    4:42 PM
+και του τα εριξε το εβραιογιουτιουμπ
+from giwrgos to everyone:    4:42 PM
+remove kebab
+from Στέργιος Καραδήμος to everyone:    4:43 PM
+σωστος ο γιωργος
+from Γερασιμος Ροντογιαννης to everyone:    4:43 PM
+uncool
+from Στέργιος Καραδήμος to everyone:    4:43 PM
+αν και οι βοσνιοι ειχαν ενα πολυ δυνατο κομματι
+from Στέργιος Καραδήμος to everyone:    4:43 PM
+bosanka artilerija
+from Tom Unit Isma Nasu to everyone:    4:43 PM
+Αυτός ο Χρήστος πολύ unstraight
+from Χρήστος Μώκος to everyone:    4:43 PM
+τα πληρωσαν ολα τους οι σερβοι , οι αλβανοι την εβγαλαν καθαρη
+from giwrgos to everyone:    4:44 PM
+καλα οι αλβανοι με αυτα που εκαναν,απορω πως γλιτωσαν γενοκτονια
+from Στέργιος Καραδήμος to everyone:    4:44 PM
+κλ αυτο ισχυει οι αμερικανοι τους γαμησαν πολυ τους σερβους
+from Στέργιος Καραδήμος to everyone:    4:44 PM
+βασικα να πεθανουν οι αμερικανοι
+from Στέργιος Καραδήμος to everyone:    4:44 PM
+και ο κοσμος θα ειναι καλυτερος
+from giwrgos to everyone:    4:44 PM
+κουτσουμπας intesifies
+from Κωνσταντίνος Μπάρκας to everyone:    4:44 PM
+χαχαχα
+from Γερασιμος Ροντογιαννης to everyone:    4:44 PM
+σερβοι = ultimate beings
+from Χρήστος Μώκος to everyone:    4:44 PM
+τι αμερικανος τι ρωσος
+from Χρήστος Μώκος to everyone:    4:44 PM
+τι γερμανος
+from Γερασιμος Ροντογιαννης to everyone:    4:44 PM
+ο ρωσος ειναι ο συντροφος σου
+from Στέργιος Καραδήμος to everyone:    4:45 PM
+τις ειχε τις γενοκτονιες σε προσοφρα ο γερμαναρας
+from Στέργιος Καραδήμος to everyone:    4:45 PM
+Ε ΠΗΡΑ 2
+from giwrgos to everyone:    4:45 PM
+xaxaxaxa
+from Γερασιμος Ροντογιαννης to everyone:    4:45 PM
+δεν ειναι ολοι μια φαρα
+from Χρήστος Μώκος to everyone:    4:45 PM
+αμερικανος , ρωσος , γερμανος , τουρκος , ολοι τους πηραν κομματι της πιτας
+from giwrgos to everyone:    4:45 PM
+γιατι ξεχνατε αυτα που εκαναν στη μεση ανατολη¨και μας τα χουν πριξει με την 9 11
+from giwrgos to everyone:    4:46 PM
+ευχομαι αλλες χιλιες 9 11
+from Tom Unit Isma Nasu to everyone:    4:46 PM
+Κι αυτός ο Νίκος πολύ unstraight
+from Eleftheria Sotiriou to everyone:    4:46 PM
+μηπως να σταμτησετε λιγο ?
+from Γερασιμος Ροντογιαννης to everyone:    4:46 PM
+ποιος ειναι κιος ο Νικος
+from Tom Unit Isma Nasu to everyone:    4:46 PM
+Χίππιτυ χόππιτυ όχι
+from giwrgos to everyone:    4:46 PM
+γιατι να σταματησοουμε?για να μιλησουμε για τα ρουχα και τις μαλακιες σας
+from Γερασιμος Ροντογιαννης to everyone:    4:46 PM
+α τωρα καταλαβα
+from Στέργιος Καραδήμος to everyone:    4:47 PM
+εμενα μου αρεσει που η δασκαλακη κανει μαθημα και στο τσατ εκτυλισσονται εθνοκαθαρσεις
+from giwrgos to everyone:    4:47 PM
+εφαγα χαχα πλ χαχα τσαμπ χωστον μου
+from Χρήστος Μώκος to everyone:    4:47 PM
+λεγεται διαλογος 
+from nikolasmporonkay to everyone:    4:47 PM
+cringe
+from Tom Unit Isma Nasu to everyone:    4:47 PM
+Ως αρμόζει βεβαίως βεβαίως
+from Γερασιμος Ροντογιαννης to everyone:    4:47 PM
+ολα ηταν μερος του πλανου του
+from Dimitris Fefes to everyone:    4:47 PM
+skidaddle skidoodle your pee pee is now a noodle
+from Γερασιμος Ροντογιαννης to everyone:    4:47 PM
+skidaddle skidoodle your pee pee is now a poo poo
+from christos m to everyone:    4:48 PM
+μονο στον αντωνακοπουλο δεν ξεφευγουμε στο τσατ
+from Γιώργος Παπουτσάς to everyone:    4:48 PM
+somebody toucha mah spaghett
+from Στέργιος Καραδήμος to everyone:    4:48 PM
+https://el.wikipedia.org/wiki/%CE%91%CF%81%CE%BA%CE%AC%CE%BD
+from Tom Unit Isma Nasu to everyone:    4:48 PM
+skidaddle skidoodle kill all the gays
+from Γερασιμος Ροντογιαννης to everyone:    4:48 PM
+συμφωνω
+from Γιώργος Παπουτσάς to everyone:    4:48 PM
+jerry
+from Γιώργος Παπουτσάς to everyone:    4:48 PM
+it's time to stop
+from Tom Unit Isma Nasu to everyone:    4:49 PM
+It's time to stop gayness I agree
+from Γερασιμος Ροντογιαννης to everyone:    4:49 PM
+κυριε παπουτσα
+from Γερασιμος Ροντογιαννης to everyone:    4:49 PM
+πως θα ομιλατε χωρις δοντια
+from giwrgos to everyone:    4:50 PM
+next genocides:armenia,gays
+from Στέργιος Καραδήμος to everyone:    4:51 PM
+οχι την αρμενια ρε
+from Στέργιος Καραδήμος to everyone:    4:51 PM
+καλη ειναι
+from christos m to everyone:    4:51 PM
+απο την αρχη του μαθηματος εγραψε σημειωσεις στο προχειρο ή τωρα ξεκιναει?
+from Χρήστος Μώκος to everyone:    4:51 PM
+γινεται οσο μιλαμε
+from Στέργιος Καραδήμος to everyone:    4:51 PM
+το αζερμπαιτζαν ναι
+from Tom Unit Isma Nasu to everyone:    4:51 PM
+Πίνακαc Αληθείαc ή απλώς πίνακας;
+from Κοσμας Αρχοντης to everyone:    4:51 PM
+τωρα πρωτη φορα
+from christos m to everyone:    4:51 PM
+οκ thanks
+from Χρήστος Μώκος to everyone:    4:51 PM
+^
+from Γερασιμος Ροντογιαννης to everyone:    4:52 PM
+μεταφορικο μεσο ο πινακας
+from Paraskeuas Koutsikos to everyone:    4:54 PM
+eutia
+from Antonis Soula to everyone:    4:55 PM
+lag
+from Αλεξανδρης Γιωργος to everyone:    4:55 PM
+κολλαει
+from Anastasis Kioutsioukis to everyone:    4:55 PM
+eihame sundesh
+from Παναγιώτα Σμπιλίρη to everyone:    4:55 PM
+κολλαει λιγο η μονο σς μενα
+from Paraskeuas Koutsikos to everyone:    4:55 PM
+oxi  re idea s
+from Renia Menegou to everyone:    4:55 PM
+γιωτα κολλαει
+from Antonis Soula to everyone:    4:55 PM
+mono se esena,emeis trollaroume
+from panagiotis l to everyone:    4:55 PM
+ptsd xhmeia
+from Κωνσταντίνος Τσάμπρας to everyone:    4:56 PM
+χολυ σιτ δις ιζ μαιντμβπλοηνγγκ
+from christos m to everyone:    4:59 PM
+prepare yourselves for speedrun
+from lefteris to everyone:    4:59 PM
+den to vlepw oute gia 10lepto dialleima
+from Κοσμας Αρχοντης to everyone:    4:59 PM
+μπεε
+from Χρήστος Μώκος to everyone:    5:00 PM
+λεμε παλι για αρνια 
+from Giorgos Rodopoulos to everyone:    5:00 PM
+αυτό που κάνει τώρα πως ονομάζεται
+from Κοσμας Αρχοντης to everyone:    5:00 PM
+αρ νι και μπεε ενα
+from Νεκταρία Βερυκόκκου to everyone:    5:00 PM
+αχαχαχααχ
+from lefteris to everyone:    5:00 PM
+speed run
+from Marios Demenagas to everyone:    5:01 PM
+αχαχαχα
+from Meletis Kalozoumis to everyone:    5:01 PM
+χαχαχαχχα
+from Μπασαγιάννη Γεωργία to everyone:    5:01 PM
+dialeimma
+from Marios Demenagas to everyone:    5:01 PM
+τι ειναι αυτο?
+from Κοσμας Αρχοντης to everyone:    5:01 PM
+αλλαγη διασταση πινακα, καπως ετσι
+from Χρήστος Μώκος to everyone:    5:02 PM
+πανω αριστερα τι λεει ;
+from Κωνσταντίνος Μπάρκας to everyone:    5:03 PM
+Που ακριβως;
+from Χρήστος Μώκος to everyone:    5:03 PM
+τι εννοει , μαλλον
+from Χρήστος Μώκος to everyone:    5:03 PM
+μαλλον = περισσοτερο
+from Κωνσταντίνος Μπάρκας to everyone:    5:04 PM
+Δεν ξερω αν εννοεις το Αmxn * αnx1 = bmx1
+from Χρήστος Μώκος to everyone:    5:04 PM
+αρα εχει επί , ευχαριστω
+from Κωνσταντίνος Μπάρκας to everyone:    5:04 PM
+;)
+from Νεκταρια Ζευγουλα to everyone:    5:06 PM
+διαλειμμα πλιζ δεν παει αλλο
+from Αλέξανδρος Πικραμένος to everyone:    5:06 PM
+διάλειμμα ουδέτερο
+μικρό χρονικό διάστημα κατά το οποίο σταματά μια δραστηριότητα, συνήθως για να ξεκουραστούν οι συμμετέχοντες
+↪ κάνε επιτέλους ένα διάλειμμα, είσαι στον υπολογιστή δέκα ώρες συνεχώς!
+from Χρήστος Μώκος to everyone:    5:06 PM
+δ/μα για αποριες
+from christos m to everyone:    5:07 PM
+δ/μα για τουαλετα
+from Χρήστος Μώκος to everyone:    5:07 PM
+παμε φουλ χωρις δ/μα μεχρι τις 8
+from Sasuke to everyone:    5:07 PM
+ευαισθητος αυτος
+from Νεκταρια Ζευγουλα to everyone:    5:07 PM
+οταν εισαι ηλεκτρολογους και κανεις διαλειμμα απο τον υπολογιστη για να κατσεις στον υπολογιστη
+from Αλέξανδρος Πικραμένος to everyone:    5:07 PM
+μωκο μη γραφεις και απο τα δυο προφιλ
+from christos m to everyone:    5:07 PM
+και 15 ειπε να ερθουμε
+from christos m to everyone:    5:08 PM
+?
+from Χρήστος Μώκος to everyone:    5:08 PM
+δεν ειμαι εγωby the way
+from Renia Menegou to everyone:    5:08 PM
+συγχρονη καναμε κα του rutherford?
+from Νεκταρια Ζευγουλα to everyone:    5:08 PM
+τοσο καιρο ειναι δυο διαφορετικα ατομα?
+from Νεκταρια Ζευγουλα to everyone:    5:08 PM
+λολ
+from Χρήστος Μώκος to everyone:    5:08 PM
+μπορει να ειναι μποτακι , αλλα παντως δεν ειναι εγω
+from christos m to everyone:    5:08 PM
+τι λες ρε λολ
+from Χρήστος Μώκος to everyone:    5:08 PM
+ο christos m
+from Γιώργος Παπουτσάς to everyone:    5:09 PM
+μωκος get a life
+from Χρήστος Μώκος to everyone:    5:09 PM
+i'm calling u out
+from Χρήστος Μώκος to everyone:    5:09 PM
+no u
+from Κωνσταντίνος Τσάμπρας to everyone:    5:09 PM
+christo m μπορεις να παθεις καταθλιψη?
+from christos m to everyone:    5:09 PM
+you want beef or something?
+from Χρήστος Μώκος to everyone:    5:09 PM
+i deal with bots every day
+from christos m to everyone:    5:10 PM
+μωκο get out of here
+from Χρήστος Μώκος to everyone:    5:11 PM
+from Νεκταρια Ζευγουλα to everyone:    5:08 PM
+τοσο καιρο ειναι δυο διαφορετικα ατομα? 
+from Χρήστος Μώκος to everyone:    5:11 PM
+νεκταρια σοβαρα τωρα;
+from Νεκταρια Ζευγουλα to everyone:    5:11 PM
+ουπς
+from Χρήστος Μώκος to everyone:    5:12 PM
+οχι τπτ αλλο , να μην χαλασει και η φημη μου
+from Χρήστος Μώκος to everyone:    5:12 PM
+christos επιθετο ;
+from Νεκταρια Ζευγουλα to everyone:    5:12 PM
+αν πει μωκος im out
+from Αλέξανδρος Πικραμένος to everyone:    5:12 PM
+μη σε νοιαζει αμα σε θελει για τηφ ημη
+from Νεκταρια Ζευγουλα to everyone:    5:13 PM
+pv
+from Νεκταρια Ζευγουλα to everyone:    5:13 PM
+pw
+from Νεκταρια Ζευγουλα to everyone:    5:13 PM
+skase
+from Χρήστος Μώκος to everyone:    5:13 PM
+ρε αλεξ λολ
+from Χρήστος Μώκος to everyone:    5:16 PM
+καποιος να χτυπησει κουδουνι για το μαθημα
+from up4206969 to everyone:    5:17 PM
+..οχι
+from christos m to everyone:    5:17 PM
+δικια σου δουλεια δεν ειναι υποτιθεται?
+from Χρήστος Μώκος to everyone:    5:17 PM
+μαθημα με την αγαπημενη μας καθηγητρια
+from christos m to everyone:    5:17 PM
+βαλε το δαχτυλο στο μελι.....
+from giorgis nikoloudakis to everyone:    5:17 PM
+na rwtisw einai i kathigitria kai i kathigitessera?
+from Χρήστος Μώκος to everyone:    5:18 PM
+4
+from Κοσμας Αρχοντης to everyone:    5:18 PM
+jesus 
+from Renia Menegou to everyone:    5:18 PM
+ποση ωρα καναμε διαλειμμα;
+from Χρήστος Μώκος to everyone:    5:18 PM
+μην ανυσηχειτε ειστε η αγαπημενη μας καθηγητρια
+from christos m to everyone:    5:18 PM
+εχεις φαει ολο το μελι μωκο......
+from Renia Menegou to everyone:    5:18 PM
+ναιι
+from Giannis Anastasopoulos to everyone:    5:19 PM
+αχαχ μωκος 10 
+from Γιώργος Παπουτσάς to everyone:    5:19 PM
+ΜΩΚ
+from Argiris Mitsopoulos to everyone:    5:19 PM
+lol
+from Γιώργος Παπουτσάς to everyone:    5:19 PM
+ΣΤΑΜΑΤΑ
+from Argiris Mitsopoulos to everyone:    5:19 PM
+Αμωκος
+from Νεκταρια Ζευγουλα to everyone:    5:19 PM
+ti cringe einai auto
+from Χρήστος Μώκος to everyone:    5:19 PM
+κριντζαρω σουπερ χαρντ
+from Paraskeuas Koutsikos to everyone:    5:19 PM
+gg
+from Κωνσταντίνος Τσάμπρας to everyone:    5:20 PM
+what has this chat come into
+from Γιώργος Παπουτσάς to everyone:    5:20 PM
+καθε περιοχη ξερει το χ
+from Χρήστος Καλογεράς to everyone:    5:20 PM
+se ka8e alh8ino opado prosferei trofh
+from Κωνσταντίνος Τσάμπρας to everyone:    5:21 PM
+ua me kanete na to janakleisv
+from Αλέξανδρος Πικραμένος to everyone:    5:21 PM
+ε ξεκολλα
+from Antonis Soula to everyone:    5:21 PM
+το βελακι ειναι το (3 1) ;
+from Χρήστος Μώκος to everyone:    5:21 PM
+it's all fun and games , until the υπο μεταγγραφη show up
+from Αλέξανδρος Πικραμένος to everyone:    5:21 PM
+μη το ξανακλεισεις
+from Κωνσταντίνος Τσάμπρας to everyone:    5:21 PM
+κανε με
+from Νεκταρια Ζευγουλα to everyone:    5:21 PM
+simp
+from Κωνσταντίνος Τσάμπρας to everyone:    5:22 PM
+*visible confusion*
+from Νεκταρια Ζευγουλα to everyone:    5:22 PM
+agagahahahah
+from Χρήστος Μώκος to everyone:    5:22 PM
+xaxaxa
+from Νεκταρία Βερυκόκκου to everyone:    5:22 PM
+αυτα τα εχει καπου στις διαφανειες που ειπε;
+from Κωνσταντίνος Τσάμπρας to everyone:    5:22 PM
+της απο οσο ξερω*
+from Χρήστος Μώκος to everyone:    5:22 PM
+αυτα που γραφει , οχι
+from christos m to everyone:    5:23 PM
+αυτα τα γραφει στο προχειρο,αλλα νμζ τα ανεβαζουν στο discord
+from Κωνσταντίνος Τσάμπρας to everyone:    5:23 PM
+τωρα οχι
+from Κωνσταντίνος Τσάμπρας to everyone:    5:23 PM
+νμζ
+from Anastasis Kioutsioukis to everyone:    5:26 PM
+epeidh arghsa ligo na mpw, h prwth tetrada ti einai
+from Anastasis Kioutsioukis to everyone:    5:26 PM
+to 3 -1 -2 2
+from christos m to everyone:    5:26 PM
+nn
+from Χρήστος Μώκος to everyone:    5:28 PM
+επιστρεψαμε στους πινακες πινακες πινακες ;
+from Χρήστος Μώκος to everyone:    5:29 PM
+ναι
+from Antonis Soula to everyone:    5:30 PM
+λαμντα
+from Paraskeuas Koutsikos to everyone:    5:30 PM
+lamDa
+from Νίκος Μήλκας to everyone:    5:30 PM
+λαμμντα
+from Χρήστος Μώκος to everyone:    5:30 PM
+lambda
+from Κοσμας Αρχοντης to everyone:    5:30 PM
+φανκξιον
+from Χρήστος Μώκος to everyone:    5:30 PM
+class
+from Argiris Mitsopoulos to everyone:    5:30 PM
+lamda baby
+from Χρήστος Μώκος to everyone:    5:30 PM
+tkinter
+from christos m to everyone:    5:30 PM
+ΛαΜπΝτΑ
+from Κωνσταντίνος Μπάρκας to everyone:    5:30 PM
+^^
+from Χρήστος Μώκος to everyone:    5:31 PM
+def isPrime(n):
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return False
+    return True
+from Giannis Anastasopoulos to everyone:    5:31 PM
+def prime(x):
+from Marios Demenagas to everyone:    5:31 PM
+θενξ χρηστο
+from Giannis Anastasopoulos to everyone:    5:31 PM
+f
+from Marios Demenagas to everyone:    5:31 PM
+ο δικος μου κωδικας ηταν αργος και εκανε ταιμ αουτ
+from Χρήστος Μώκος to everyone:    5:31 PM
+λολ το'ξερα
+from Γερασιμος Ροντογιαννης to everyone:    5:31 PM
+και αμα μου αρεσει το n
+from Χρήστος Μώκος to everyone:    5:32 PM
+μετα πας if isPrime(i)==True:
+from Marios Demenagas to everyone:    5:32 PM
+αλλα σε τι διαστημα?
+from Χρήστος Μώκος to everyone:    5:32 PM
+for i in range(1,1000000):
+    if isPrime(i)==True:
+from Marios Demenagas to everyone:    5:32 PM
+βαζεις τυχαια εναν μεγαλο αριθμο?
+from Giorgos Rodopoulos to everyone:    5:32 PM
+λάθος μώκο
+from Χρήστος Μώκος to everyone:    5:33 PM
+θελει κι αλλο μηδενικο;
+from Marios Demenagas to everyone:    5:33 PM
+δε θα πρεπε το διαστημα να εξαρταται απο το ινπουτ?
+from Marios Demenagas to everyone:    5:33 PM
+καπως
+from Νεκταρία Βερυκόκκου to everyone:    5:33 PM
+αιαι
+from Giorgos Rodopoulos to everyone:    5:33 PM
+δεν γίνεται να βάλεις απλά 100000 στο range
+from Marios Demenagas to everyone:    5:33 PM
+εγω ετσι το κανα αλλα για μεγαλους αριθμους αργουσε πολυ
+from Giorgos Rodopoulos to everyone:    5:33 PM
+πρέπει να εξαρτάται από το input
+from Marios Demenagas to everyone:    5:33 PM
+αυτο
+from Χρήστος Μώκος to everyone:    5:33 PM
+γινεται και το'κανα και πηρα 10
+from Marios Demenagas to everyone:    5:33 PM
+αχαχαχα
+from Marios Demenagas to everyone:    5:33 PM
+σωστο και αυτο
+from Giorgos Rodopoulos to everyone:    5:33 PM
+θεωρητικά γίνεται, αλλά δεν είναι επαγγελματικό και είναι πατέντα
+from Marios Demenagas to everyone:    5:33 PM
+^
+from Κωνσταντίνος Πέτρου to everyone:    5:34 PM
+krima
+from Marios Demenagas to everyone:    5:34 PM
+στην τελικη ποιος νοιαζεται αν θες απλα τον βαθμο αλλα νμζ εχει δικιο ο ροδο
+from Νεκταρια Ζευγουλα to everyone:    5:34 PM
+o pikramenos einai simp re krima
+from Χρήστος Μώκος to everyone:    5:34 PM
+δικος μου κωδικας , ζω και πεθαινω με αυτον
+from Giorgos Rodopoulos to everyone:    5:34 PM
+μωρέ ναι αν θες βάζεις και πολλά ιφ με τις τιμές που βάζει ο coderunner
+from Παναγιώτα Σμπιλίρη to everyone:    5:34 PM
+εγω για  να το κανω γρηγορο προσπαθησα να ενταξω και ριτηρια διαιρετοτητας
+from Γερασιμος Ροντογιαννης to everyone:    5:34 PM
+αυτο το ειπαν οτι το κοβουν
+from Παναγιώτα Σμπιλίρη to everyone:    5:34 PM
+αλλα καποιες τιμες μου τις τρωει
+from Χρήστος Μώκος to everyone:    5:35 PM
+βσκ 4 , οχι 10 που ειπα πριν λολ
+from Marios Demenagas to everyone:    5:35 PM
+ροδο κανει και κρυφα τεστ
+from Giorgos Rodopoulos to everyone:    5:35 PM
+στο τελευταίο μου λέει failed hidden test γτχτ
+from Marios Demenagas to everyone:    5:35 PM
+εγω στα κρυφα χανω στη δευτερη
+from Γιώργος Παπουτσάς to everyone:    5:35 PM
+το 3ο το βγαλε κανεις;
+from Χρήστος Μώκος to everyone:    5:35 PM
+οχι
+from Γιώργος Παπουτσάς to everyone:    5:35 PM
+εμενα κολλαει στα 8 νουμερα
+from Χρήστος Μώκος to everyone:    5:36 PM
+μου κολλησε ο Η/Υ 2 φορες με το 3ο
+from Χρήστος Μώκος to everyone:    5:36 PM
+λολ
+from Kωνσταντινος Μαντζαρης to everyone:    5:36 PM
+τοσο δυσκολη ειναι η φροντ?
+from Χρήστος Μώκος to everyone:    5:36 PM
+μονο το 3ο
+from Χρήστος Μώκος to everyone:    5:37 PM
+παπ , εχω βρει μεχρι και 9 αριθμους
+from Χρήστος Μώκος to everyone:    5:37 PM
+μεσα σε 3 δευτ.
+from Χρήστος Μώκος to everyone:    5:37 PM
+μετα χαλαει
+from Giorgos Rodopoulos to everyone:    5:37 PM
+εμένα δουλεύει κανονικά αλλα χάνει στα κρυφά τεστ
+from Χρήστος Μώκος to everyone:    5:37 PM
+τρου
+from Χρήστος Μώκος to everyone:    5:37 PM
+ειναι και ο χρονος
+from Χρήστος Μώκος to everyone:    5:38 PM
+γι'αυτο ειπε 3 δευτ.
+from Marios Demenagas to everyone:    5:38 PM
+εμενα στη δευτερη χανει στα χιντεν γιατι το κανα να εξαρταται απο το ινποθτ και αργει πολυ για μεγαλες τιμες
+from Κωνσταντίνος Τσάμπρας to everyone:    5:38 PM
+παλι η φροντ ? 
+from Χρήστος Μώκος to everyone:    5:38 PM
+*ειπα
+from Χρήστος Μώκος to everyone:    5:38 PM
+μαριε πηρες 3/4 ;
+from Marios Demenagas to everyone:    5:38 PM
+2/4
+from Χρήστος Μώκος to everyone:    5:38 PM
+ροδο σου ζηταει βοηθεια
+from Giorgos Rodopoulos to everyone:    5:39 PM
+?
+from Κωνσταντίνος Τσάμπρας to everyone:    5:39 PM
+απλα καντε το πιο γρηγορε εζ
+from Κωνσταντίνος Τσάμπρας to everyone:    5:39 PM
+γρηγορο*
+from Marios Demenagas to everyone:    5:39 PM
+πως?
+from Παναγιώτης Ζάγκος to everyone:    5:39 PM
+ελα να με δειξεις πως
+from Κωνσταντίνος Τσάμπρας to everyone:    5:39 PM
+δεν ξερω τι εχεις κανει για να σου πω λμαο
+from Χρήστος Μώκος to everyone:    5:40 PM
+το input στο τελος μπαινει , πώς βοηθαει στο χρονο , ροδο ;
+from Κωνσταντίνος Τσάμπρας to everyone:    5:40 PM
+με τον σγαρμπα ειχαμε φτιαξει ενα σχετικα γρηγορο
+from Marios Demenagas to everyone:    5:40 PM
+ναι τρου
+from Βασίλης Βλασσόπουλος to everyone:    5:40 PM
+για φροντιστηριακη λετε?
+from Marios Demenagas to everyone:    5:40 PM
+αλλα δν ξερω σε αυτο του σγαρμπα πως να κανω το διαστημα να εξαρταται απο το ινπουτ
+from Giorgos Rodopoulos to everyone:    5:41 PM
+για τον αριθμό των στοιχείων που θα ψάξεις να βρεις αν ειναι πρώτοι
+from Χρήστος Μώκος to everyone:    5:41 PM
+δεν νμζ χρειαζεται να εξαρταται
+from Κωνσταντίνος Τσάμπρας to everyone:    5:41 PM
+αυτο του σγαρμπα απλα κοιταει αν ειναι πρωτος
+from Βασίλης Βλασσόπουλος to everyone:    5:41 PM
+το 2 ερωτημα
+from Marios Demenagas to everyone:    5:41 PM
+ναι το ξερω
+from Χρήστος Μώκος to everyone:    5:41 PM
+^
+from Κωνσταντίνος Τσάμπρας to everyone:    5:41 PM
+φτιαξτε και μια λιστα να αποθηκευει τους πρωτους
+from Χρήστος Μώκος to everyone:    5:42 PM
+^
+from Marios Demenagas to everyone:    5:42 PM
+και αυτο το κανα
+from Marios Demenagas to everyone:    5:42 PM
+τεσπα
+from Παπαχρηστου Μαριος-Γιωργος to everyone:    5:42 PM
+στην δευτερη το for loop πως το βαλατε?
+from Marios Demenagas to everyone:    5:42 PM
+δεν εχω ασχοληθει πολυ αρα παιζει να σας πριζω αδικα
+from Χρήστος Μώκος to everyone:    5:42 PM
+for loop , what ?
+from Κωνσταντίνος Τσάμπρας to everyone:    5:42 PM
+το while?
+from Παπαχρηστου Μαριος-Γιωργος to everyone:    5:43 PM
+for i in range....
+from panagiotis l to everyone:    5:43 PM
+egw me while to ekana
+from Κωνσταντίνος Τσάμπρας to everyone:    5:43 PM
+mallon leei allo o stoy
+from Kωνσταντινος Μαντζαρης to everyone:    5:43 PM
+απο αυτα που ακοθω θα περασω μια πολυ ωραια παρασκευη
+from Παπαχρηστου Μαριος-Γιωργος to everyone:    5:44 PM
+εφω λεω στο σημειο που προσθετες στοιχεια στην λιστα
+from Marios Demenagas to everyone:    5:44 PM
+χαχαχα τσιλ ρε
+from Κωνσταντίνος Τσάμπρας to everyone:    5:44 PM
+yparxoyn diaforoi tropoi
+from Χρήστος Μώκος to everyone:    5:44 PM
+ροδο , τι εκανες για να κερδισεις χρονο στο 3ο ;
+from Κωνσταντίνος Τσάμπρας to everyone:    5:44 PM
+λαδωσε το coderunner
+from Χρήστος Μώκος to everyone:    5:44 PM
+λολ
+from Σταύρος Μαρκουλάκης to everyone:    5:44 PM
+metavlites apla
+from panagiotis l to everyone:    5:45 PM
+sto 3o apla kane copy paste to 1o kai to 2o
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+kai kaneis assign tis times kathe fora
+from Χρήστος Μώκος to everyone:    5:45 PM
+functions ?
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+tsou
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+olo linear
+from Χρήστος Μώκος to everyone:    5:45 PM
+μεταβλητες ;
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+alla me classes nmz vgainei kai trela grigora
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+nai
+from Κωνσταντίνος Τσάμπρας to everyone:    5:45 PM
+ο σταυρος εβαλε κατευθειαν print(2,3,5....)
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+paizei na leo alli askisi chris gama to
+from Χρήστος Μώκος to everyone:    5:45 PM
+λολ
+from Κωνσταντίνος Τσάμπρας to everyone:    5:45 PM
+ευκολά
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+xaxaaxxaxax
+from panagiotis l to everyone:    5:45 PM
+ahahahah easy re
+from Marios Demenagas to everyone:    5:45 PM
+αχαχαχ
+from Σταύρος Μαρκουλάκης to everyone:    5:45 PM
+etsi akrivos tsamp
+from Χρήστος Μώκος to everyone:    5:45 PM
+σωθηκα
+from Κωνσταντίνος Τσάμπρας to everyone:    5:46 PM
+και sep="\n"
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+den boroun na doun an ekana lathos
+from Κωνσταντίνος Τσάμπρας to everyone:    5:46 PM
+μια γραμμη εζ
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+nai akrivos
+from Αλέξανδρος Χριστοδούλου to everyone:    5:46 PM
+pos vgike to δ1;
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+btw katse na to dokimaso
+from Antonis Soula to everyone:    5:46 PM
+αν το λυσεις βγαινει
+from Marios Demenagas to everyone:    5:46 PM
+με horner
+from Antonis Soula to everyone:    5:46 PM
+gauss
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+horner?
+from panagiotis l to everyone:    5:46 PM
+afou to code runner den paizei timia giati na paiksoume emeis...
+from Χρήστος Μώκος to everyone:    5:46 PM
+ουτε καν ο 10ος αριθμος δεν μου φορτωνει
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+xmmm
+from Antonis Soula to everyone:    5:46 PM
+το t διπλα τι ειναι;
+from Γεράσιμος Μίαρης to everyone:    5:46 PM
+homer
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+kati mou elege auto kapote
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+a nai nai 
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+thimithika
+from Σταύρος Μαρκουλάκης to everyone:    5:46 PM
+xxaxaxaxa
+from Κωνσταντίνος Τσάμπρας to everyone:    5:46 PM
+αν δεν εχετε φτιαξει ενα γρηγορο προγραμμα ο 10ος δεν φορτωνει ποτε
+from Renia Menegou to everyone:    5:47 PM
+γιατι επι t?
+from Κωνσταντίνος Τσάμπρας to everyone:    5:47 PM
+εχει 9 ψηφια
+from lefteris to everyone:    5:47 PM
+to -8 kai to +2 poy ta vrhkame?
+from Marios Demenagas to everyone:    5:47 PM
+αχαχα προφανως το πα στην τυχη το χορνερ ελπιζω να μη μπερδεψα κανεναν
+from Alexandros Ntagkas to everyone:    5:47 PM
+το t δηλωνει την απειρια
+from Σταύρος Μαρκουλάκης to everyone:    5:47 PM
+doug
+from Χρήστος Μώκος to everyone:    5:47 PM
+ειδες το τσακρα μου , τσαμπ ;
+from Σταύρος Μαρκουλάκης to everyone:    5:47 PM
+stamata re file
+from Σταύρος Μαρκουλάκης to everyone:    5:47 PM
+xaxaxaxa
+from Renia Menegou to everyone:    5:47 PM
+ ευχαριστωω
+from Alexandros Ntagkas to everyone:    5:47 PM
+smurf
+from Σταύρος Μαρκουλάκης to everyone:    5:47 PM
+smurf mlk
+from Κωνσταντίνος Τσάμπρας to everyone:    5:47 PM
+εννοειται
+from Σταύρος Μαρκουλάκης to everyone:    5:47 PM
+eleo
+from Σταύρος Μαρκουλάκης to everyone:    5:47 PM
+eleos
+from Χρήστος Μώκος to everyone:    5:47 PM
+πραγματι μονο 9 φορτωνει
+from Χρήστος Μώκος to everyone:    5:47 PM
+σε2 δευτερολεπτα
+from Alexandros Ntagkas to everyone:    5:48 PM
+απογορευση εχει μετα τις 10 ε?
+from Marios Demenagas to everyone:    5:48 PM
+ναι
+from Σταύρος Μαρκουλάκης to everyone:    5:48 PM
+pao na to kano me print
+from Toutounas Konstantinos to everyone:    5:48 PM
+νν αφου range(10) ειναι απο 0 εως 9 δλδ 10 νουμερα
+from Κωνσταντίνος Τσάμπρας to everyone:    5:48 PM
+ο 9ος 2 εχει νμζ 6-7 ψηφιακαι ο 10ος εχει 9 αρα...
+from Κωνσταντίνος Τσάμπρας to everyone:    5:48 PM
+σβηστε το 2
+from Χρήστος Μώκος to everyone:    5:48 PM
+^
+from Σταύρος Μαρκουλάκης to everyone:    5:48 PM
+nai doug
+from Antonis Soula to everyone:    5:48 PM
+και οι 3 πινακες που προκυπτουν εχουν οριζουσα 0 ;
+from Σταύρος Μαρκουλάκης to everyone:    5:48 PM
+nea metra
+from Χρήστος Μώκος to everyone:    5:48 PM
+το ξερω πως τρελαινει , αλλα...
+from Αλέξανδρος Πικραμένος to everyone:    5:49 PM
+ESY DE POLYPROSEXES
+from Κωνσταντίνος Τσάμπρας to everyone:    5:49 PM
+σταυρος ρομποτ
+from Αλέξανδρος Πικραμένος to everyone:    5:49 PM
+TWRA MPHKES
+from Κωνσταντίνος Τσάμπρας to everyone:    5:49 PM
+he has joined us
+from Σταύρος Μαρκουλάκης to everyone:    5:49 PM
+eimai apo tis 4
+from Χρήστος Μώκος to everyone:    5:49 PM
+ασχολεισαι με εμας , γι'αυτο λολ
+from Σταύρος Μαρκουλάκης to everyone:    5:49 PM
+edo
+from Παναγιώτης Ζάγκος to everyone:    5:49 PM
+αναλυτικα
+from Παναγιώτης Ζάγκος to everyone:    5:49 PM
+..\
+from Marios Demenagas to everyone:    5:49 PM
+πωςκαι δεν τα καταλαβες ρε σταυρουκο χαχα
+from Σταύρος Μαρκουλάκης to everyone:    5:49 PM
+apla eimai autilas
+from Αλέξανδρος Πικραμένος to everyone:    5:49 PM
+re akou ti sou leei
+from Argiris Mitsopoulos to everyone:    5:49 PM
+always has been autilas
+from Σταύρος Μαρκουλάκης to everyone:    5:49 PM
+nmz to katalava
+from Αλέξανδρος Πικραμένος to everyone:    5:49 PM
+kai se to tsat
+from Στέργιος Καραδήμος to everyone:    5:49 PM
+κυρια το παλεψα αλλα με νικησε
+from panagiotis l to everyone:    5:49 PM
+stavro apo indous des ta
+from Σταύρος Μαρκουλάκης to everyone:    5:49 PM
+alla thelo na kano tis praxeis na to sigourepso
+from Χρήστος Μώκος to everyone:    5:49 PM
+10ε , φορτωσε επιτελους !
+from Σταύρος Μαρκουλάκης to everyone:    5:49 PM
+xxaxxaxa stergio nai true
+from Σταύρος Μαρκουλάκης to everyone:    5:50 PM
+oi indoi me tiltaroun re
+from Κωνσταντίνος Τσάμπρας to everyone:    5:50 PM
+xaxa xrhsto
+from Κωνσταντίνος Τσάμπρας to everyone:    5:50 PM
+ποση ωρα
+from Σταύρος Μαρκουλάκης to everyone:    5:50 PM
+0.69'
+from Kωνσταντινος Μαντζαρης to everyone:    5:50 PM
+τωρα μας γαμησε
+from Χρήστος Μώκος to everyone:    5:50 PM
+πλακα κανω λολ , θα'χε κολλησε με το γουεμπεξ ανοιχτο λολ
+from Γιώργος Παπουτσάς to everyone:    5:50 PM
+memory error :(
+from Σταύρος Μαρκουλάκης to everyone:    5:50 PM
+''*
+from Κωνσταντίνος Τσάμπρας to everyone:    5:50 PM
+ngl σε εμενα κρασαρε 2 φορες το λαπτοπ εψθες
+from Χρήστος Μώκος to everyone:    5:50 PM
+me too
+from Γιώργος Παπουτσάς to everyone:    5:51 PM
+εμενα σημερα κρασαρε μια φορα
+from Κωνσταντίνος Τσάμπρας to everyone:    5:51 PM
+και memory errors ebgaze
+from Κοσμας Αρχοντης to everyone:    5:51 PM
+:P
+from Γιώργος Αντωναρόπουλος to everyone:    5:51 PM
+μας γαμησε τωρα 
+from Χρήστος Μώκος to everyone:    5:51 PM
+εμενα χθες 2
+from Argiris Mitsopoulos to everyone:    5:51 PM
+εκπτβεις
+from Kωνσταντινος Μαντζαρης to everyone:    5:51 PM
+ουτε εκει καναμε
+from Κοσμας Αρχοντης to everyone:    5:51 PM
+oυτε
+from Αλεξανδρης Γιωργος to everyone:    5:51 PM
+ποτε καναμε ;
+from Γιώργος Αντωναρόπουλος to everyone:    5:51 PM
+γαμω τους μιγαδικους
+from Giannis Anastasopoulos to everyone:    5:51 PM
+ekptois
+from Κωνσταντίνος Τσάμπρας to everyone:    5:51 PM
+μονο στο φροντηστηριο καναμε τετοια
+from Γιώργος Παπουτσάς to everyone:    5:51 PM
+τσαμπρα το εβγαλες τελικα;
+from Κοσμας Αρχοντης to everyone:    5:51 PM
+αχαχα
+from Κωνσταντίνος Τσάμπρας to everyone:    5:51 PM
+ναι
+from Χρήστος Μώκος to everyone:    5:51 PM
+black fiday
+from Σταύρος Μαρκουλάκης to everyone:    5:51 PM
+i i i
+from Γιώργος Παπουτσάς to everyone:    5:51 PM
+πως
+from Χρήστος Μώκος to everyone:    5:52 PM
+φροντήριο ;; hold up
+from Επαμεινώνδας Μαρίνης to everyone:    5:52 PM
+ΓνΩριΖοΥΜαΙ
+from Αλεξανδρης Γιωργος to everyone:    5:52 PM
+Εστω οτι εχουμε κανει μιγαδικους
+from Νεκταρία Βερυκόκκου to everyone:    5:52 PM
+κλεο
+from Argiris Mitsopoulos to everyone:    5:52 PM
+το 2ο εξαμηνο
+from Πανος Βλαχος to everyone:    5:52 PM
+xaxaxaxaxaxaxaxaxxaxaxxaxaxaxa
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Επαμεινώνδας Μαρίνης to everyone:    5:52 PM
+αχαχαχχαχα
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Πανος Βλαχος to everyone:    5:52 PM
+f
+from Παναγιώτης Ζάγκος to everyone:    5:52 PM
+f
+from Κοσμας Αρχοντης to everyone:    5:52 PM
+απογνωση αφηστε
+from Πανος Βλαχος to everyone:    5:52 PM
+ναι καλα 
+from Σταύρος Μαρκουλάκης to everyone:    5:52 PM
+esto oti xeroume migadikous
+from Giannis Anastasopoulos to everyone:    5:52 PM
+tsiggelis an einai tha mas ta teleiwsei se 15 leptra arakste
+from Κωνσταντίνος Τσάμπρας to everyone:    5:52 PM
+πρεπει να βρισκεις γρηγορα τους πρωτους και να σκεφτεις
+from Σταύρος Μαρκουλάκης to everyone:    5:52 PM
+axxxaxxxx
+from Πανος Βλαχος to everyone:    5:52 PM
+πρεπει να ξερω και πραγματα απο 2 εξαμηνο?
+from Παναγιώτης Ζάγκος to everyone:    5:52 PM
+atopo stif
+from Στέργιος Καραδήμος to everyone:    5:52 PM
+να τα διαβασετε μονοι σας ρε κωλοπαιδα ολα αυτοι θα σας τα μαθουν;
+from Φωτεινη Γαλανη to everyone:    5:52 PM
+καταλαβα, τα λεμε σεπτεμβρη παιδια
+from Παναγιώτης Ζάγκος to everyone:    5:52 PM
+oxi
+from Κωνσταντίνος Τσάμπρας to everyone:    5:52 PM
+μην κανεις απλα brute force
+from Σταύρος Μαρκουλάκης to everyone:    5:52 PM
+se 20 lepta olo to examino
+from Χρήστος Καλογεράς to everyone:    5:52 PM
+oxi
+from Παναγιώτης Ζάγκος to everyone:    5:52 PM
+den 8a prepe
+from Γιώργος Αντωναρόπουλος to everyone:    5:52 PM
+οχι
+from Μπασαγιάννη Γεωργία to everyone:    5:52 PM
+αλλα στο 1ο εξαμηνο τιποτα απο μιγαδικους
+from Πανος Βλαχος to everyone:    5:52 PM
+βγηκαν εδω και 5 χρονια μιγαδικοι
+from Νεκταρία Βερυκόκκου to everyone:    5:53 PM
+εκπτωεις
+from Γιώργος Παπουτσάς to everyone:    5:53 PM
+αυτο που ειπε ο σταυρος
+from Παπαχρηστου Μαριος-Γιωργος to everyone:    5:53 PM
+ειναι σος αυτα του 2ου εξαμηνου?
+from Παναγιώτης Ζάγκος to everyone:    5:53 PM
+καλημερα
+from Κωνσταντίνος Τσάμπρας to everyone:    5:53 PM
+ακους το οτι πεθανε στην φωνη της
+from Renia Menegou to everyone:    5:53 PM
+καλα παει αυτο
+from Μπασαγιάννη Γεωργία to everyone:    5:53 PM
+απο το 2017 βγηκαν
+from lefteris to everyone:    5:53 PM
+απο το 15
+from Στέργιος Καραδήμος to everyone:    5:53 PM
+ΗΡΕΜΑ
+from Αλεξανδρης Γιωργος to everyone:    5:53 PM
+βαβουρα
+from Fay Kaniou to everyone:    5:53 PM
+ΗΡΕΜΗΣΤΕ
+from lefteris to everyone:    5:53 PM
+*******
+from Παναγιώτης Ζάγκος to everyone:    5:53 PM
+5 χρονια
+from Στέργιος Καραδήμος to everyone:    5:53 PM
+ΗΣΥΧΑ
+from Σταύρος Μαρκουλάκης to everyone:    5:53 PM
+xxaxaxxxaxax
+from lefteris to everyone:    5:53 PM
+το 15
+from Παναγιώτης Ζάγκος to everyone:    5:53 PM
+κλαιω
+from Giannis Anastasopoulos to everyone:    5:53 PM
+ΗΣΥΧΑ ΡΕ
+from Argiris Mitsopoulos to everyone:    5:53 PM
+ησυχα
+from Γιώργος Παπουτσάς to everyone:    5:53 PM
+περσαν τα χρονιοα
+from Μπασαγιάννη Γεωργία to everyone:    5:53 PM
+σσσσ
+from Alexandros Ntagkas to everyone:    5:53 PM
+ησυχαα ρΕ
+from Γιώργος Παπουτσάς to everyone:    5:53 PM
+γερασαμε
+from Παναγιώτης Ζάγκος to everyone:    5:53 PM
+χαχαχαχ
+from Νεκταρία Βερυκόκκου to everyone:    5:53 PM
+μπιφ
+from Παναγιώτης Ζάγκος to everyone:    5:53 PM
+μιλαω ρε
+from Κωνσταντίνος Τσάμπρας to everyone:    5:53 PM
+γερασαμε ρεεεε
+'''
+fcounter=0
+msgcounter=0
+win_counter=0
+mac_counter=0
+lin_counter=0
+names=[]
+fnames=[]
+previousy=[]
 
-students=[]
-st=[]
-total=[]
-total1=[]
-mescount=0
-fcount=0
-count=0
-oldy =[]
-num=0
-num1=0
-fspam=[]
-rank=1
-frank=1
-
-for line in chat.split('\n'):
-    line=line.split('\n')
+for line in chat.split('\n'):#enonei kathe seira se mia lista to split
+    line=line.split('\n')#kanei lista kathe seira
     for i in line:
-        y=i.split()
-        if count%2!=0:
-            newy = y+oldy
-            students.append(newy)
-            y =[]
-            total1.append(oldy)
-        oldy = y
-        count+=1
+        y=i.split()#xorizei kathe lista
+        if y==[]:
+            pass
+        elif y[0] == 'from':
+            names.append((y[1],y[2]))
+            msgcounter+=1
+        else:
+            if y[0]=='f' or y[0]=='φ':
+                fnames.append((previousy[1],previousy[2]))
+                fcounter+=1
+            if  y[0].strip("'").split('-')[0] == "Windows":
+                win_counter += 1
+            if  y[0].strip("'").split('-')[0]== "macOS":
+                mac_counter += 1
+            if  y[0].strip("'").split('-')[0]== "Linux":
+                lin_counter += 1
+        previousy=y
+        
+y1 = Counter(names)#oloi
+c= Counter(fnames)#aytoi poy esteilan f
 
-for m in students:
-    if m[0] =='f':
-        fcount+=1
-        st.append((m[2],m[3])) 
-    if m[0] != 'f':
-        mescount+=1
-
-for l in total1:
-    total.append((l[1],l[2]))
-
-c=Counter(st)
-y1=Counter(total) 
-
-print(fcount,'f στο τσατ απο τα',mescount+fcount,'μηνυματα')
+print(fcounter,'f στο τσατ απο τα',msgcounter,'μηνυματα')
 print('')
 print('---ΣΥΝΟΛΙΚΑ ΜΗΝΥΜΑΤΑ---')
 print('')
+
+rank=1
+frank=1
+num=0
+num1=0
+fspam=[]
 for value1, count1 in y1.most_common():#an thes to top 10 bale most_common(10)
     print(rank,'.',value1,':', count1,'συνολικα μηνυματα')
     rank+=1
     num+=1
+
 print('')
 print(70*'_')
 print('')
@@ -63,10 +1429,11 @@ for value,count in c.most_common():#an thes to top 10 bale most_common(10)
                 if count==count1:
                     fspam.append(value)
 print('')
-print(num1,'ατομα σπαμαραν f απο τους',num)
+print(num1,'ατομα σπαμαραν f απο τους',num,'ποσοστο:',round((num1/num)*100,3),'%')
 print('')
 for i in fspam:
     print('O/Η',i,'σπαμαρε μονο f')
-
-    
-
+print('')
+print(70*'_')
+print('')
+print(f'Windows: {win_counter}\nMacOS: {mac_counter}\nLinux: {lin_counter}')
